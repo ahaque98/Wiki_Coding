@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WikiCoding_DataAccess.Data;
 
@@ -11,9 +12,11 @@ using WikiCoding_DataAccess.Data;
 namespace WikiCoding_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230711165231_AuthorsPublishersAndSubCategories")]
+    partial class AuthorsPublishersAndSubCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +50,7 @@ namespace WikiCoding_DataAccess.Migrations
 
                     b.HasKey("Author_Id");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("WikiCoding_Model.Models.Book", b =>
@@ -71,7 +74,7 @@ namespace WikiCoding_DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
 
                     b.HasData(
                         new
@@ -126,7 +129,7 @@ namespace WikiCoding_DataAccess.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("WikiCoding_Model.Models.Publisher", b =>
@@ -146,7 +149,7 @@ namespace WikiCoding_DataAccess.Migrations
 
                     b.HasKey("Publisher_Id");
 
-                    b.ToTable("Publishers", (string)null);
+                    b.ToTable("Publishers");
                 });
 
             modelBuilder.Entity("WikiCoding_Model.Models.SubCategory", b =>
@@ -164,7 +167,7 @@ namespace WikiCoding_DataAccess.Migrations
 
                     b.HasKey("SubCategory_Id");
 
-                    b.ToTable("SubCategories", (string)null);
+                    b.ToTable("SubCategories");
                 });
 #pragma warning restore 612, 618
         }
