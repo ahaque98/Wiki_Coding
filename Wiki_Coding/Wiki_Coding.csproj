@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WikiCoding_DataAccess\WikiCoding_DataAccess.csproj" />
+    <ProjectReference Include="..\WikiCoding_Models\WikiCoding_Model.csproj" />
+  </ItemGroup>
+
 </Project>
