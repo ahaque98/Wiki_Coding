@@ -14,6 +14,8 @@ namespace WikiCoding_Model.Models
 
         [NotMapped] //table won't be created but will function as a db_table
         public string PriceRange { get; set; }
+        
+        public BookDetail BookDetail { get; set; } //Navigation Property for BookDetails for Relation
 
     }
 }

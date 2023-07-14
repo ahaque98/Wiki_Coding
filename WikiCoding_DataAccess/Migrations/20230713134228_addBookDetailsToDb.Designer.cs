@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WikiCoding_DataAccess.Data;
 
@@ -11,9 +12,11 @@ using WikiCoding_DataAccess.Data;
 namespace WikiCoding_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230713134228_addBookDetailsToDb")]
+    partial class addBookDetailsToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,9 +122,6 @@ namespace WikiCoding_DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookDetail_Id"));
 
-                    b.Property<int>("Book_Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("NumberOfChapters")
                         .HasColumnType("int");
 
@@ -132,9 +132,6 @@ namespace WikiCoding_DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookDetail_Id");
-
-                    b.HasIndex("Book_Id")
-                        .IsUnique();
 
                     b.ToTable("BookDetails");
                 });
@@ -193,22 +190,6 @@ namespace WikiCoding_DataAccess.Migrations
                     b.HasKey("SubCategory_Id");
 
                     b.ToTable("SubCategories");
-                });
-
-            modelBuilder.Entity("WikiCoding_Model.Models.BookDetail", b =>
-                {
-                    b.HasOne("WikiCoding_Model.Models.Book", "Book")
-                        .WithOne("BookDetail")
-                        .HasForeignKey("WikiCoding_Model.Models.BookDetail", "Book_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-                });
-
-            modelBuilder.Entity("WikiCoding_Model.Models.Book", b =>
-                {
-                    b.Navigation("BookDetail");
                 });
 #pragma warning restore 612, 618
         }
